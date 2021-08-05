@@ -11,17 +11,26 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class AlbumRepository {
 
+    companion object {
+        //        const val baseUrl = "http://jsonplaceholder.typicode.com"
+        const val baseUrl = "http://localhost:8080/"
+
+        val okHttpClient: OkHttpClient by lazy {
+            val logging = HttpLoggingInterceptor()
+            logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
+            OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .build()
+        }
+    }
+
     private val service: AlbumService by lazy {
-        val logging = HttpLoggingInterceptor()
-        logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
-        val client = OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .build()
+        val client = okHttpClient
 
         Retrofit.Builder()
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://jsonplaceholder.typicode.com")
+            .baseUrl(baseUrl)
             .build()
             .create(AlbumService::class.java)
     }

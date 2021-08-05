@@ -11,7 +11,6 @@ import com.bumptech.glide.load.model.LazyHeaders
 import com.ford.uitesting3_mockserver.data.models.domain.AlbumCover
 import com.ford.uitesting3_mockserver.databinding.ListItemAlbumBinding
 
-
 class AlbumAdapter : ListAdapter<AlbumCover, AlbumAdapter.AlbumViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
