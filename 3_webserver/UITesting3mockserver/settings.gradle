@@ -1,0 +1,2 @@
+rootProject.name = "UI Testing 3 - mockserver"
+include ':app'
